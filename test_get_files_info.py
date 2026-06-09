@@ -17,8 +17,8 @@ def test() -> None:
     print(result)
     print("")
 
-    result = get_files_info("calculator", "main.py")
-    print("Result for 'main.py':")
+    result = get_files_info("calculator", "pkg")
+    print("Result for 'pkg':")
     print(result)
 
 
