@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 from google import genai
 from google.genai import types
 
+from prompt import system_prompt
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="AI Code Assistant")
@@ -33,6 +34,10 @@ def generate_content(
     response = client.models.generate_content(
         model="gemini-2.5-flash",
         contents=messages,
+        config=types.GenerateContentConfig(
+            system_instruction=system_prompt,
+            temperature=0
+        )
     )
     if not response.usage_metadata:
         raise RuntimeError("Gemini API response appears to be malformed")
