@@ -10,7 +10,7 @@ def write_file(working_directory: str, file_path: str, content: str) -> str:
         if os.path.isdir(abs_file_path):
             return f'Error: Cannot write to "{file_path}" as it is a directory'
         os.makedirs(os.path.dirname(abs_file_path), exist_ok=True)
-        with open(file_path, "w") as f:
+        with open(abs_file_path, "w") as f:
             f.write(content)
         return f'Successfully wrote to "{file_path}" ({len(content)} characters written)'    
     except Exception as e:
